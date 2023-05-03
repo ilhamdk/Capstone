@@ -40,7 +40,7 @@ const LandingPage = () => {
 
             <div class="navbar-collapse bg-white">
               <button type="button" class="navbar-hide-btn">
-                <img src="images/close-icon.png" />
+                <img src={CloseIcon} />
               </button>
               <ul class="navbar-nav">
                 <li class="nav-item">
@@ -83,7 +83,7 @@ const LandingPage = () => {
                 <form>
                   <div class="search-bar-box flex">
                     <span class="search-icon flex">
-                      <img src="images/search-icon-dark.png" />
+                      <img src={SearchDark} />
                     </span>
                     <input
                       type="search"
@@ -119,7 +119,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div class="header-inner-right">
-              <img src="images/header.png" />
+              <img src={Header} />
             </div>
           </div>
         </div>
@@ -149,7 +149,7 @@ const LandingPage = () => {
               </div>
               <div class="about-right flex">
                 <div class="img">
-                  <img src="images/about-img.png" />
+                  <img src={About} />
                 </div>
               </div>
             </div>
@@ -176,14 +176,14 @@ const LandingPage = () => {
               </p>
               <div class="line-art flex">
                 <div></div>
-                <img src="images/4-dots.png" />
+                <img src={Dot} />
                 <div></div>
               </div>
             </div>
             <div class="services-inner text-center grid">
               <article class="service-item">
                 <div class="icon">
-                  <img src="images/service-icon-1.png" />
+                  <img src={Service1} />
                 </div>
                 <h3>Cardio Monitoring</h3>
                 <p class="text text-sm">
@@ -195,7 +195,7 @@ const LandingPage = () => {
 
               <article class="service-item">
                 <div class="icon">
-                  <img src="images/service-icon-2.png" />
+                  <img src={Service2} />
                 </div>
                 <h3>Medical Treatment</h3>
                 <p class="text text-sm">
@@ -207,7 +207,7 @@ const LandingPage = () => {
 
               <article class="service-item">
                 <div class="icon">
-                  <img src="images/service-icon-3.png" />
+                  <img src={Service3} />
                 </div>
                 <h3>Emergency Help</h3>
                 <p class="text text-sm">
@@ -219,7 +219,7 @@ const LandingPage = () => {
 
               <article class="service-item">
                 <div class="icon">
-                  <img src="images/service-icon-4.png" />
+                  <img src={Service4} />
                 </div>
                 <h3>First Aid</h3>
                 <p class="text text-sm">
@@ -235,7 +235,7 @@ const LandingPage = () => {
         <section id="banner-two" class="banner-two text-center">
           <div class="container grid">
             <div class="banner-two-left">
-              <img src="images/banner-2-img.png" />
+              <img src={Banner2} />
             </div>
             <div class="banner-two-right">
               <p class="lead text-white">
@@ -263,7 +263,7 @@ const LandingPage = () => {
             <div class="doc-panel-inner grid">
               <div class="doc-panel-item">
                 <div class="img flex">
-                  <img src="images/doc-1.png" alt="doctor image" />
+                  <img src={Doc1} alt="doctor image" />
                   <div class="info text-center bg-blue text-white flex">
                     <p class="lead">samuel goe</p>
                     <p class="text-lg">Medicine</p>
@@ -273,7 +273,7 @@ const LandingPage = () => {
 
               <div class="doc-panel-item">
                 <div class="img flex">
-                  <img src="images/doc-2.png" alt="doctor image" />
+                  <img src={Doc2} alt="doctor image" />
                   <div class="info text-center bg-blue text-white flex">
                     <p class="lead">elizabeth ira</p>
                     <p class="text-lg">Cardiology</p>
@@ -283,7 +283,7 @@ const LandingPage = () => {
 
               <div class="doc-panel-item">
                 <div class="img flex">
-                  <img src="images/doc-3.png" alt="doctor image" />
+                  <img src={Doc3} alt="doctor image" />
                   <div class="info text-center bg-blue text-white flex">
                     <p class="lead">tanya collins</p>
                     <p class="text-lg">Medicine</p>
@@ -357,7 +357,7 @@ const LandingPage = () => {
             <div class="posts-inner grid">
               <article class="post-item bg-white">
                 <div class="img">
-                  <img src="images/post-1.jpg" />
+                  <img src={Post1} />
                 </div>
                 <div class="content">
                   <h4>
@@ -386,7 +386,7 @@ const LandingPage = () => {
 
               <article class="post-item bg-white">
                 <div class="img">
-                  <img src="images/post-2.jpg" />
+                  <img src={Post2} />
                 </div>
                 <div class="content">
                   <h4>
@@ -415,7 +415,7 @@ const LandingPage = () => {
 
               <article class="post-item bg-white">
                 <div class="img">
-                  <img src="images/post-3.jpg" />
+                  <img src={Post3} />
                 </div>
                 <div class="content">
                   <h4>
@@ -501,7 +501,7 @@ const LandingPage = () => {
             <div class="footer-item">
               <h3 class="footer-head">about us</h3>
               <div class="icon">
-                <img src="images/logo.png" />
+                <img src={Logo} />
               </div>
               <p class="text text-md">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
