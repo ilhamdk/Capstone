@@ -1,124 +1,108 @@
-import React from "react";
+import React, { useEffect } from 'react';
 
 import Dot from "../images/4-dots.png";
 import About from "../images/about-img.png";
-import Banner1 from "../images/banner-1-img.png";
 import Banner2 from "../images/banner-2-img.png";
-import BannerBg from "../images/banner-two-bg.png";
 import CloseIcon from "../images/close-icon.png";
 import Doc1 from "../images/doc-1.png";
 import Doc2 from "../images/doc-2.png";
 import Doc3 from "../images/doc-3.png";
-import Doc4 from "../images/doc-4.png";
-import DocGroup from "../images/doc-group-2.png";
 import HamMenu from "../images/ham-menu-icon.png";
 import Header from "../images/header.png";
 import Logo from "../images/logo.png";
-import Package from "../images/package-service-img.jpg";
 import Post1 from "../images/post-1.jpg";
 import Post2 from "../images/post-2.jpg";
 import Post3 from "../images/post-3.jpg";
-import Search from "../images/search-icon.png";
-import SearchDark from "../images/search-icon-dark.png";
 import Service1 from "../images/service-icon-1.png";
 import Service2 from "../images/service-icon-2.png";
 import Service3 from "../images/service-icon-3.png";
 import Service4 from "../images/service-icon-4.png";
 
 const LandingPage = () => {
+
+  useEffect(() => {
+    // navbar toggling
+    const navbarShowBtn = document.querySelector('.navbar-show-btn');
+    const navbarCollapseDiv = document.querySelector('.navbar-collapse');
+    const navbarHideBtn = document.querySelector('.navbar-hide-btn');
+
+    navbarShowBtn.addEventListener('click', function(){
+        navbarCollapseDiv.classList.add('navbar-show');
+    });
+    navbarHideBtn.addEventListener('click', function(){
+        navbarCollapseDiv.classList.remove('navbar-show');
+    });
+
+    // stopping all animation and transition
+    let resizeTimer;
+    window.addEventListener('resize', () =>{
+        document.body.classList.add('resize-animation-stopper');
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.body.classList.remove('resize-animation-stopper');
+        }, 400);
+    });
+  }, []);
+
   return (
-    <body>
-      <header class="header bg-blue">
-        <nav class="navbar bg-blue">
-          <div class="container flex">
-            <a href="index.html" class="navbar-brand">
-              <img src={Logo} alt="site logo" />
-            </a>
-            <button type="button" class="navbar-show-btn">
-              <img src={HamMenu} />
+    <main>
+      <header className="header bg-blue">
+      <nav className="navbar bg-blue">
+        <div className="container flex">
+          <a href="index.html" className="navbar-brand">
+            <img src={Logo} alt="site logo" />
+          </a>
+          <button type="button" className="navbar-show-btn">
+            <img src={HamMenu} />
+          </button>
+
+          <div className="navbar-collapse bg-white">
+            <button type="button" className="navbar-hide-btn">
+              <img src={CloseIcon} />
             </button>
-
-            <div class="navbar-collapse bg-white">
-              <button type="button" class="navbar-hide-btn">
-                <img src={CloseIcon} />
-              </button>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    About
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Service
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Doctors
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Departments
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Blog
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-              <div class="search-bar">
-                <form>
-                  <div class="search-bar-box flex">
-                    <span class="search-icon flex">
-                      <img src={SearchDark} />
-                    </span>
-                    <input
-                      type="search"
-                      class="search-control"
-                      placeholder="Search here"
-                    />
-                  </div>
-                </form>
-              </div>
-            </div>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <a href="#" className="nav-link">
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="#" className="nav-link">
+                  About
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="#" className="nav-link">
+                  Doctors
+                </a>
+              </li>
+            </ul>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        <div class="header-inner text-white text-center">
-          <div class="container grid">
-            <div class="header-inner-left">
+        <div className="header-inner text-white text-center">
+          <div className="container grid">
+            <div className="header-inner-left">
               <h1>
                 your most trusted
                 <br /> <span>health partner</span>
               </h1>
-              <p class="lead">the best match services for you</p>
-              <p class="text text-md">
+              <p className="lead">the best match services for you</p>
+              <p className="text text-md">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
                 nulla odit esse necessitatibus corporis voluptatem?
               </p>
-              <div class="btn-group">
-                <a href="#" class="btn btn-white">
+              <div className="btn-group">
+                <a href="#" className="btn btn-white">
                   Learn More
                 </a>
-                <a href="#" class="btn btn-light-blue">
+                <a href="#" className="btn btn-light-blue">
                   Sign In
                 </a>
               </div>
             </div>
-            <div class="header-inner-right">
+            <div className="header-inner-right">
               <img src={Header} />
             </div>
           </div>
@@ -126,15 +110,15 @@ const LandingPage = () => {
       </header>
 
       <main>
-        <section id="about" class="about py">
-          <div class="about-inner">
-            <div class="container grid">
-              <div class="about-left text-center">
-                <div class="section-head">
+        <section id="about" className="about py">
+          <div className="about-inner">
+            <div className="container grid">
+              <div className="about-left text-center">
+                <div className="section-head">
                   <h2>About Us</h2>
-                  <div class="border-line"></div>
+                  <div className="border-line"></div>
                 </div>
-                <p class="text text-lg">
+                <p className="text text-lg">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Recusandae molestias delectus facilis, temporibus eum
                   consectetur, a debitis exercitationem quae distinctio aliquid
@@ -143,12 +127,12 @@ const LandingPage = () => {
                   voluptas velit sit voluptate perferendis cum pariatur
                   molestiae tenetur repellat!
                 </p>
-                <a href="#" class="btn btn-white">
+                <a href="#" className="btn btn-white">
                   Learn More
                 </a>
               </div>
-              <div class="about-right flex">
-                <div class="img">
+              <div className="about-right flex">
+                <div className="img">
                   <img src={About} />
                 </div>
               </div>
@@ -156,73 +140,73 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="banner-one" class="banner-one text-center">
-          <div class="container text-white">
-            <blockquote class="lead">
-              <i class="fas fa-quote-left"></i> When you are young and healthy,
+        <section id="banner-one" className="banner-one text-center">
+          <div className="container text-white">
+            <blockquote className="lead">
+              <i className="fas fa-quote-left"></i> When you are young and healthy,
               it never occurs to you that in a single second your whole life
-              could change. <i class="fas fa-quote-right"></i>
+              could change. <i className="fas fa-quote-right"></i>
             </blockquote>
-            <small class="text text-sm">- Anonim Nano</small>
+            <small className="text text-sm">- Anonim Nano</small>
           </div>
         </section>
 
-        <section id="services" class="services py">
-          <div class="container">
-            <div class="section-head text-center">
-              <h2 class="lead">The Best Doctor gives the least medicines</h2>
-              <p class="text text-lg">
+        <section id="services" className="services py">
+          <div className="container">
+            <div className="section-head text-center">
+              <h2 className="lead">The Best Doctor gives the least medicines</h2>
+              <p className="text text-lg">
                 A perfect way to show your hospital services
               </p>
-              <div class="line-art flex">
+              <div className="line-art flex">
                 <div></div>
                 <img src={Dot} />
                 <div></div>
               </div>
             </div>
-            <div class="services-inner text-center grid">
-              <article class="service-item">
-                <div class="icon">
+            <div className="services-inner text-center grid">
+              <article className="service-item">
+                <div className="icon">
                   <img src={Service1} />
                 </div>
                 <h3>Cardio Monitoring</h3>
-                <p class="text text-sm">
+                <p className="text text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Perspiciatis possimus doloribus facilis velit, assumenda
                   tempora quas mollitia quos voluptatibus consequatur!
                 </p>
               </article>
 
-              <article class="service-item">
-                <div class="icon">
+              <article className="service-item">
+                <div className="icon">
                   <img src={Service2} />
                 </div>
                 <h3>Medical Treatment</h3>
-                <p class="text text-sm">
+                <p className="text text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Perspiciatis possimus doloribus facilis velit, assumenda
                   tempora quas mollitia quos voluptatibus consequatur!
                 </p>
               </article>
 
-              <article class="service-item">
-                <div class="icon">
+              <article className="service-item">
+                <div className="icon">
                   <img src={Service3} />
                 </div>
                 <h3>Emergency Help</h3>
-                <p class="text text-sm">
+                <p className="text text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Perspiciatis possimus doloribus facilis velit, assumenda
                   tempora quas mollitia quos voluptatibus consequatur!
                 </p>
               </article>
 
-              <article class="service-item">
-                <div class="icon">
+              <article className="service-item">
+                <div className="icon">
                   <img src={Service4} />
                 </div>
                 <h3>First Aid</h3>
-                <p class="text text-sm">
+                <p className="text text-sm">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Perspiciatis possimus doloribus facilis velit, assumenda
                   tempora quas mollitia quos voluptatibus consequatur!
@@ -232,21 +216,21 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="banner-two" class="banner-two text-center">
-          <div class="container grid">
-            <div class="banner-two-left">
+        <section id="banner-two" className="banner-two text-center">
+          <div className="container grid">
+            <div className="banner-two-left">
               <img src={Banner2} />
             </div>
-            <div class="banner-two-right">
-              <p class="lead text-white">
+            <div className="banner-two-right">
+              <p className="lead text-white">
                 When you are young and healthy, it never occurs to you that in a
                 single second your whole life could change.
               </p>
-              <div class="btn-group">
-                <a href="#" class="btn btn-white">
+              <div className="btn-group">
+                <a href="#" className="btn btn-white">
                   Learn More
                 </a>
-                <a href="#" class="btn btn-light-blue">
+                <a href="#" className="btn btn-light-blue">
                   Sign In
                 </a>
               </div>
@@ -254,256 +238,151 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="doc-panel" class="doc-panel py">
-          <div class="container">
-            <div class="section-head">
+        <section id="doc-panel" className="doc-panel py">
+          <div className="container">
+            <div className="section-head">
               <h2>Our Doctor Panel</h2>
             </div>
 
-            <div class="doc-panel-inner grid">
-              <div class="doc-panel-item">
-                <div class="img flex">
+            <div className="doc-panel-inner grid">
+              <div className="doc-panel-item">
+                <div className="img flex">
                   <img src={Doc1} alt="doctor image" />
-                  <div class="info text-center bg-blue text-white flex">
-                    <p class="lead">samuel goe</p>
-                    <p class="text-lg">Medicine</p>
+                  <div className="info text-center bg-blue text-white flex">
+                    <p className="lead">samuel goe</p>
+                    <p className="text-lg">Medicine</p>
                   </div>
                 </div>
               </div>
 
-              <div class="doc-panel-item">
-                <div class="img flex">
+              <div className="doc-panel-item">
+                <div className="img flex">
                   <img src={Doc2} alt="doctor image" />
-                  <div class="info text-center bg-blue text-white flex">
-                    <p class="lead">elizabeth ira</p>
-                    <p class="text-lg">Cardiology</p>
+                  <div className="info text-center bg-blue text-white flex">
+                    <p className="lead">elizabeth ira</p>
+                    <p className="text-lg">Cardiology</p>
                   </div>
                 </div>
               </div>
 
-              <div class="doc-panel-item">
-                <div class="img flex">
+              <div className="doc-panel-item">
+                <div className="img flex">
                   <img src={Doc3} alt="doctor image" />
-                  <div class="info text-center bg-blue text-white flex">
-                    <p class="lead">tanya collins</p>
-                    <p class="text-lg">Medicine</p>
+                  <div className="info text-center bg-blue text-white flex">
+                    <p className="lead">tanya collins</p>
+                    <p className="text-lg">Medicine</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        <section id="package-service" class="package-service py text-center">
-          <div class="container">
-            <div class="package-service-head text-white">
-              <h2>Package Service</h2>
-              <p class="text text-lg">Best service package for you</p>
-            </div>
-            <div class="package-service-inner grid">
-              <div class="package-service-item bg-white">
-                <div class="icon flex">
-                  <i class="fas fa-phone fa-2x"></i>
-                </div>
-                <h3>Regular Case</h3>
-                <p class="text text-sm">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur, asperiores. Expedita, reiciendis quos beatae at
-                  consequatur voluptatibus fuga iste adipisci.
-                </p>
-                <a href="#" class="btn btn-blue">
-                  Read More
-                </a>
-              </div>
-
-              <div class="package-service-item bg-white">
-                <div class="icon flex">
-                  <i class="fas fa-calendar-alt fa-2x"></i>
-                </div>
-                <h3>Serious Case</h3>
-                <p class="text text-sm">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur, asperiores. Expedita, reiciendis quos beatae at
-                  consequatur voluptatibus fuga iste adipisci.
-                </p>
-                <a href="#" class="btn btn-blue">
-                  Read More
-                </a>
-              </div>
-
-              <div class="package-service-item bg-white">
-                <div class="icon flex">
-                  <i class="fas fa-comments fa-2x"></i>
-                </div>
-                <h3>Emergency Case</h3>
-                <p class="text text-sm">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur, asperiores. Expedita, reiciendis quos beatae at
-                  consequatur voluptatibus fuga iste adipisci.
-                </p>
-                <a href="#" class="btn btn-blue">
-                  Read More
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="posts" class="posts py">
-          <div class="container">
-            <div class="section-head">
+        <section id="posts" className="posts py">
+          <div className="container">
+            <div className="section-head">
               <h2>Latest Post</h2>
             </div>
-            <div class="posts-inner grid">
-              <article class="post-item bg-white">
-                <div class="img">
+            <div className="posts-inner grid">
+              <article className="post-item bg-white">
+                <div className="img">
                   <img src={Post1} />
                 </div>
-                <div class="content">
+                <div className="content">
                   <h4>
                     Inspiring stories of person and family centered care during
                     a global pandemic.
                   </h4>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Dolor voluptas eius recusandae sunt obcaecati esse facere
                     cumque. Aliquid, cupiditate debitis.
                   </p>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nobis quia ipsam, quis iure sed nulla.
                   </p>
-                  <div class="info flex">
-                    <small class="text text-sm">
-                      <i class="fas fa-clock"></i> October 27, 2021
+                  <div className="info flex">
+                    <small className="text text-sm">
+                      <i className="fas fa-clock"></i> October 27, 2021
                     </small>
-                    <small class="text text-sm">
-                      <i class="fas fa-comment"></i> 5 comments
+                    <small className="text text-sm">
+                      <i className="fas fa-comment"></i> 5 comments
                     </small>
                   </div>
                 </div>
               </article>
 
-              <article class="post-item bg-white">
-                <div class="img">
+              <article className="post-item bg-white">
+                <div className="img">
                   <img src={Post2} />
                 </div>
-                <div class="content">
+                <div className="content">
                   <h4>
                     Inspiring stories of person and family centered care during
                     a global pandemic.
                   </h4>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Dolor voluptas eius recusandae sunt obcaecati esse facere
                     cumque. Aliquid, cupiditate debitis.
                   </p>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nobis quia ipsam, quis iure sed nulla.
                   </p>
-                  <div class="info flex">
-                    <small class="text text-sm">
-                      <i class="fas fa-clock"></i> October 27, 2021
+                  <div className="info flex">
+                    <small className="text text-sm">
+                      <i className="fas fa-clock"></i> October 27, 2021
                     </small>
-                    <small class="text text-sm">
-                      <i class="fas fa-comment"></i> 5 comments
+                    <small className="text text-sm">
+                      <i className="fas fa-comment"></i> 5 comments
                     </small>
                   </div>
                 </div>
               </article>
 
-              <article class="post-item bg-white">
-                <div class="img">
+              <article className="post-item bg-white">
+                <div className="img">
                   <img src={Post3} />
                 </div>
-                <div class="content">
+                <div className="content">
                   <h4>
                     Inspiring stories of person and family centered care during
                     a global pandemic.
                   </h4>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Dolor voluptas eius recusandae sunt obcaecati esse facere
                     cumque. Aliquid, cupiditate debitis.
                   </p>
-                  <p class="text text-sm">
+                  <p className="text text-sm">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nobis quia ipsam, quis iure sed nulla.
                   </p>
-                  <div class="info flex">
-                    <small class="text text-sm">
-                      <i class="fas fa-clock"></i> October 27, 2021
+                  <div className="info flex">
+                    <small className="text text-sm">
+                      <i className="fas fa-clock"></i> October 27, 2021
                     </small>
-                    <small class="text text-sm">
-                      <i class="fas fa-comment"></i> 5 comments
+                    <small className="text text-sm">
+                      <i className="fas fa-comment"></i> 5 comments
                     </small>
                   </div>
                 </div>
               </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" class="contact py">
-          <div class="container grid">
-            <div class="contact-left">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2384.6268289831164!2d-6.214682984112116!3d53.29621947996855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486709e0c9c80f8f%3A0x92f408d10f2277c2!2sREVO!5e0!3m2!1sen!2snp!4v1636264848776!5m2!1sen!2snp"
-                width="600"
-                height="450"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-              ></iframe>
-            </div>
-            <div class="contact-right text-white text-center bg-blue">
-              <div class="contact-head">
-                <h3 class="lead">Contact Us</h3>
-                <p class="text text-md">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga.
-                </p>
-              </div>
-              <form>
-                <div class="form-element">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div class="form-element">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Your email"
-                  />
-                </div>
-                <div class="form-element">
-                  <textarea
-                    rows="5"
-                    placeholder="Your Message"
-                    class="form-control"
-                  ></textarea>
-                </div>
-                <button type="submit" class="btn btn-white btn-submit">
-                  <i class="fas fa-arrow-right"></i> Send Message
-                </button>
-              </form>
             </div>
           </div>
         </section>
       </main>
 
-      <footer id="footer" class="footer text-center">
-        <div class="container">
-          <div class="footer-inner text-white py grid">
-            <div class="footer-item">
-              <h3 class="footer-head">about us</h3>
-              <div class="icon">
+      <footer id="footer" className="footer text-center">
+        <div className="container">
+          <div className="footer-inner text-white py grid">
+            <div className="footer-item">
+              <h3 className="footer-head">about us</h3>
+              <div className="icon">
                 <img src={Logo} />
               </div>
-              <p class="text text-md">
+              <p className="text text-md">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Debitis saepe incidunt fugiat optio corporis ea!
               </p>
@@ -515,9 +394,9 @@ const LandingPage = () => {
               </address>
             </div>
 
-            <div class="footer-item">
-              <h3 class="footer-head">tags</h3>
-              <ul class="tags-list flex">
+            <div className="footer-item">
+              <h3 className="footer-head">tags</h3>
+              <ul className="tags-list flex">
                 <li>medical care</li>
                 <li>emergency</li>
                 <li>therapy</li>
@@ -527,79 +406,56 @@ const LandingPage = () => {
               </ul>
             </div>
 
-            <div class="footer-item">
-              <h3 class="footer-head">Quick Links</h3>
+            <div className="footer-item">
+              <h3 className="footer-head">Quick Links</h3>
               <ul>
                 <li>
-                  <a href="#" class="text-white">
+                  <a href="#" className="text-white">
                     Our Services
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-white">
+                  <a href="#" className="text-white">
                     Our Plan
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-white">
+                  <a href="#" className="text-white">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-white">
+                  <a href="#" className="text-white">
                     Appointment Schedule
                   </a>
                 </li>
               </ul>
             </div>
 
-            <div class="footer-item">
-              <h3 class="footer-head">make an appointment</h3>
-              <p class="text text-md">
+            <div className="footer-item">
+              <h3 className="footer-head">make an appointment</h3>
+              <p className="text text-md">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Voluptatum, omnis.
               </p>
-              <ul class="appointment-info">
+              <ul className="appointment-info">
                 <li>8:00 AM - 11:00 AM</li>
                 <li>2:00 PM - 05:00 PM</li>
                 <li>8:00 PM - 11:00 PM</li>
                 <li>
-                  <i class="fas fa-envelope"></i>
+                  <i className="fas fa-envelope"></i>
                   <span>revomedic@gmail.com</span>
                 </li>
                 <li>
-                  <i class="fas fa-phone"></i>
+                  <i className="fas fa-phone"></i>
                   <span>+003 478 2834(00)</span>
                 </li>
               </ul>
             </div>
           </div>
-
-          <div class="footer-links">
-            <ul class="flex">
-              <li>
-                <a href="#" class="text-white flex">
-                  {" "}
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="text-white flex">
-                  {" "}
-                  <i class="fab fa-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="text-white flex">
-                  {" "}
-                  <i class="fab fa-linkedin"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </footer>
-    </body>
+    </main>
   );
 };
 
