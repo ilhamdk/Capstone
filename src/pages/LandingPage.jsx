@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../Landing.css'
 
 import Dot from "../images/4-dots.png";
 import About from "../images/about-img.png";
