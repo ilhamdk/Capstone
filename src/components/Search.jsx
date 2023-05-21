@@ -83,6 +83,7 @@ const Search = () => {
           placeholder="Find a doctor"
           onKeyDown={handleKey}
           onChange={(e) => setUsername(e.target.value)}
+          value={username}
         />
       </div>
       {err && <span>User not found!</span>}
