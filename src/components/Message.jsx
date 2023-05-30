@@ -26,7 +26,7 @@ const Message = ({ message }) => {
           }
           alt=""
         />
-        <span>Just Now</span>
+        <span>saiki</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>

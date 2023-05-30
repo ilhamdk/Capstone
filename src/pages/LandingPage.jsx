@@ -1,23 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Landing.css'
+import { Link } from 'react-router-dom';
+/* eslint-disable */
 
 import Dot from "../images/4-dots.png";
-import About from "../images/about-img.png";
-import Banner2 from "../images/banner-2-img.png";
+import About from "../images/about-images.png";
 import CloseIcon from "../images/close-icon.png";
 import Doc1 from "../images/doc-1.png";
 import Doc2 from "../images/doc-2.png";
 import Doc3 from "../images/doc-3.png";
 import HamMenu from "../images/ham-menu-icon.png";
 import Header from "../images/header.png";
-import Logo from "../images/logo.png";
-import Post1 from "../images/post-1.jpg";
-import Post2 from "../images/post-2.jpg";
-import Post3 from "../images/post-3.jpg";
-import Service1 from "../images/service-icon-1.png";
-import Service2 from "../images/service-icon-2.png";
-import Service3 from "../images/service-icon-3.png";
-import Service4 from "../images/service-icon-4.png";
+import navicon from "../images/nav-icon.png";
+import Consul from "../images/consul.png";
+import Tes from "../images/tes.png";
+import Sts from "../images/Sts.png";
+import Vector from "../images/Vector.png"
+import Circle from "../images/circle-hero.png"
+import Support from "../images/support.png"
+
+import { BsInstagram, BsTwitter } from "react-icons/bs";
+import { CiFacebook } from "react-icons/ci"
+import { IoMdChatboxes } from "react-icons/io"
+import { MdOutlineTipsAndUpdates } from "react-icons/md"
+import { HiDocumentCheck } from "react-icons/hi2"
+import { SiGmail } from "react-icons/si"
+import { FiMapPin } from "react-icons/fi"
+import { FaRegCopyright } from "react-icons/fa"
 
 const LandingPage = () => {
 
@@ -45,13 +54,21 @@ const LandingPage = () => {
     });
   }, []);
 
+  //dropdown
+  
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleMenu = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <main>
-      <header className="header bg-blue">
-      <nav className="navbar bg-blue">
+      <header className="header bg-white">
+      <nav className="navbar bg-white">
         <div className="container flex">
-          <a href="index.html" className="navbar-brand">
-            <img src={Logo} alt="site logo" />
+          <a href="/landing" className="navbar-brand">
+            <img src={navicon} alt="site logo" />
           </a>
           <button type="button" className="navbar-show-btn">
             <img src={HamMenu} />
@@ -63,18 +80,33 @@ const LandingPage = () => {
             </button>
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a href="#" className="nav-link">
+                <a href="/landing" className="nav-link">
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  About
-                </a>
+                    <div
+                      className={`dots ${isActive ? 'active' : ''}`}
+                      onClick={toggleMenu}
+                    >
+                      <a href="#" className='nav-link'>Features</a>
+                      <div className="shadow"></div>
+                      <div className="container-dropdown cut">
+                        <div className="drop"></div>
+                      </div>
+                      <div className="list">
+                        <ul>
+                          <li><Link to="/login">Consultation</Link></li>
+                          <li><Link to="/tips">Stress Release Tips</Link></li>
+                          <li><Link to="/quizz">Depressed Test</Link></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div className="cursor" onClick={toggleMenu}></div>
               </li>
               <li className="nav-item">
-                <a href="#" className="nav-link">
-                  Doctors
+                <a href="/aboutus" className="nav-link">
+                  About us
                 </a>
               </li>
             </ul>
@@ -84,22 +116,25 @@ const LandingPage = () => {
 
         <div className="header-inner text-white text-center">
           <div className="container grid">
+              <div className="color"></div>
+              <div className="color"></div>
+              <div className="color"></div>
             <div className="header-inner-left">
               <h1>
-                your most trusted
-                <br /> <span>health partner</span>
+              Beyond the Darkness
               </h1>
-              <p className="lead">the best match services for you</p>
               <p className="text text-md">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam,
-                nulla odit esse necessitatibus corporis voluptatem?
+              platform layanan dukungan kesehatan mental dan pengembangan pribadi yang bertujuan untuk membantu Anda mewujudkan kesehatan mental dan berkembang secara optimal.
               </p>
               <div className="btn-group">
-                <a href="#" className="btn btn-white">
-                  Learn More
+                <a href="https://www.instagram.com/bnd.cafe/" className="btn btn-light-blue">
+                  <BsInstagram size={30}/>
                 </a>
-                <a href="#" className="btn btn-light-blue">
-                  Sign In
+                <a href="https://www.facebook.com/profile.php?id=100051840548321" className="btn btn-light-blue">
+                  <CiFacebook  size={30}/>
+                </a>
+                <a href="https://twitter.com/BNDmag" className="btn btn-light-blue">
+                  <BsTwitter  size={30}/>
                 </a>
               </div>
             </div>
@@ -107,30 +142,22 @@ const LandingPage = () => {
               <img src={Header} />
             </div>
           </div>
+          <img src={Vector} className='vector-hero' />
+          <img src={Circle} className='circle-hero'/>
         </div>
       </header>
 
       <main>
-        <section id="about" className="about py">
+        <section id="about" className="about pt">
           <div className="about-inner">
+          <div className="section-head">
+                  <h2>About Us</h2>
+          </div>
             <div className="container grid">
               <div className="about-left text-center">
-                <div className="section-head">
-                  <h2>About Us</h2>
-                  <div className="border-line"></div>
-                </div>
-                <p className="text text-lg">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Recusandae molestias delectus facilis, temporibus eum
-                  consectetur, a debitis exercitationem quae distinctio aliquid
-                  ea ipsam vitae esse amet soluta maxime dolorem? Inventore ut
-                  maiores illo ipsum nisi, nulla eligendi unde reiciendis quod
-                  voluptas velit sit voluptate perferendis cum pariatur
-                  molestiae tenetur repellat!
+                <p className="text">
+                "Beyond the darkness" secara harfiah dapat diterjemahkan sebagai "melebihi kegelapan" atau "lebih dari kegelapan" dalam Bahasa Indonesia. Dalam konteks kesehatan mental, frasa ini dapat memiliki beberapa arti atau konotasi, tergantung pada konteks dan interpretasi individu. Beberapa mungkin mengartikan "beyond the darkness" sebagai pencapaian keadaan pikiran yang sehat dan positif setelah melewati masa-masa sulit atau pengalaman traumatis dalam hidup mereka, sedangkan yang lain mungkin mengartikannya sebagai proses penyembuhan diri dari kondisi kesehatan mental yang mengganggu, seperti depresi atau gangguan kecemasan. Secara umum, "beyond the darkness" dapat diartikan sebagai kemampuan untuk menemukan cahaya dan harapan di tengah masa-masa sulit atau pengalaman yang menantang dalam hidup kita, dan untuk berkembang dan menjadi pribadi yang lebih kuat dan sehat secara emosional.
                 </p>
-                <a href="#" className="btn btn-white">
-                  Learn More
-                </a>
               </div>
               <div className="about-right flex">
                 <div className="img">
@@ -141,24 +168,10 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section id="banner-one" className="banner-one text-center">
-          <div className="container text-white">
-            <blockquote className="lead">
-              <i className="fas fa-quote-left"></i> When you are young and healthy,
-              it never occurs to you that in a single second your whole life
-              could change. <i className="fas fa-quote-right"></i>
-            </blockquote>
-            <small className="text text-sm">- Anonim Nano</small>
-          </div>
-        </section>
-
-        <section id="services" className="services py">
+        <section id="services" className="services">
           <div className="container">
             <div className="section-head text-center">
-              <h2 className="lead">The Best Doctor gives the least medicines</h2>
-              <p className="text text-lg">
-                A perfect way to show your hospital services
-              </p>
+              <h2 className="lead">BnD Features</h2>
               <div className="line-art flex">
                 <div></div>
                 <img src={Dot} />
@@ -166,102 +179,137 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="services-inner text-center grid">
+              <Link to="/login">
               <article className="service-item">
                 <div className="icon">
-                  <img src={Service1} />
+                  <IoMdChatboxes className='pinks' size={75} />
                 </div>
-                <h3>Cardio Monitoring</h3>
-                <p className="text text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perspiciatis possimus doloribus facilis velit, assumenda
-                  tempora quas mollitia quos voluptatibus consequatur!
-                </p>
+                <h3>Consultation</h3>
               </article>
+              </Link>
 
+              <Link to="/tips">
               <article className="service-item">
                 <div className="icon">
-                  <img src={Service2} />
+                  <MdOutlineTipsAndUpdates className='pinks' size={75} />
                 </div>
-                <h3>Medical Treatment</h3>
-                <p className="text text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perspiciatis possimus doloribus facilis velit, assumenda
-                  tempora quas mollitia quos voluptatibus consequatur!
-                </p>
+                <h3>Stress Release Tips</h3>
               </article>
+              </Link>
 
+              <Link to="/quizz">
               <article className="service-item">
                 <div className="icon">
-                  <img src={Service3} />
+                  <HiDocumentCheck className='pinks' size={75} />
                 </div>
-                <h3>Emergency Help</h3>
-                <p className="text text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perspiciatis possimus doloribus facilis velit, assumenda
-                  tempora quas mollitia quos voluptatibus consequatur!
-                </p>
+                <h3>Depressed Test</h3>
               </article>
-
-              <article className="service-item">
-                <div className="icon">
-                  <img src={Service4} />
-                </div>
-                <h3>First Aid</h3>
-                <p className="text text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Perspiciatis possimus doloribus facilis velit, assumenda
-                  tempora quas mollitia quos voluptatibus consequatur!
-                </p>
-              </article>
+              </Link>
             </div>
           </div>
         </section>
 
-        <section id="banner-two" className="banner-two text-center">
-          <div className="container grid">
-            <div className="banner-two-left">
-              <img src={Banner2} />
-            </div>
-            <div className="banner-two-right">
-              <p className="lead text-white">
-                When you are young and healthy, it never occurs to you that in a
-                single second your whole life could change.
-              </p>
-              <div className="btn-group">
-                <a href="#" className="btn btn-white">
-                  Learn More
-                </a>
-                <a href="#" className="btn btn-light-blue">
-                  Sign In
-                </a>
+        <section id="about" className="about pt">
+          <div className="about-inner">
+          <div className="section-head">
+          </div>
+            <div className="container grid">
+            <div className="about-right flex">
+                <div className="img">
+                  <div className="colors"></div>
+                  <img className='img-consul' src={Consul} />
+                </div>
+              </div>
+              <div className="about-left text-center">
+              <div className="pt">
+              <h2 className='flex'>Consultation</h2>
+                <p className="text text-center">
+                Chatting dengan psikolog atau terapis, ini adalah fitur utama dari website BnD yang memberikan kesempatan bagi pengguna untuk berbicara secara online dengan psikolog atau terapis yang bersertifikat. Pengguna dapat memilih psikolog atau terapis yang sesuai dengan kebutuhan dan preferensi mereka.
+                </p>
+              </div>
               </div>
             </div>
           </div>
         </section>
 
+        <section id="about" className="about pt">
+          <div className="about-inner">
+          <div className="section-head">
+          </div>
+            <div className="container grid">
+            <div className="about-left text-center">
+              <div className="pt">
+                <div className="pt"></div>
+                <h2 className='flex'>Stress Release Tips</h2>
+                <p className="text text-center">
+                Tips dan trick untuk mengurangi stres. Stress Release Tips adalah memberikan pengguna dengan saran dan teknik yang dapat membantu mereka mengurangi stres dan meningkatkan kesehatan mental mereka.
+                </p>
+              </div>
+              </div>
+              <div className="about-right flex">
+                <div className="img">
+                  <div className="colorx"></div>
+                  <img className='img-telepon' src={Sts} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="about pt">
+          <div className="about-inner pt">
+            <div className="container grid">
+              <div className="about-right flex">
+                <div className="img">
+                  <div className="colorz"></div>
+                  <img src={Tes} />
+                </div>
+              </div>
+              <div className="about-left text-center">
+               <div className="pt">
+               <div className="pt">
+                 <h2 className='flex'>Depressed Test</h2>
+                 <p className="text text-center">
+                   Kuis atau tes online lainnya yang dapat membantu pengguna memahami lebih baik kondisi kesehatan mental mereka dan menemukan cara untuk mengatasi masalah kesehatan mental lainnya.                </p>
+               </div>
+               </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="banner-one" className="banner-one text-center">
+          <div className="container text-white">
+            <blockquote className="lead">
+              <i className="fas fa-quote-left"></i>"The greatest gift you can give yourself is a little bit of your own attention." 
+              <i className="fas fa-quote-right"></i>
+            </blockquote>
+            <small className="text text-sm">- Anthony J. D'Angelo</small>
+          </div>
+        </section>
+
         <section id="doc-panel" className="doc-panel py">
           <div className="container">
-            <div className="section-head">
-              <h2>Our Doctor Panel</h2>
+            <div className="section-head flex">
+              <h2>Our Psychiatrist</h2>
             </div>
 
             <div className="doc-panel-inner grid">
+
               <div className="doc-panel-item">
                 <div className="img flex">
-                  <img src={Doc1} alt="doctor image" />
-                  <div className="info text-center bg-blue text-white flex">
-                    <p className="lead">samuel goe</p>
-                    <p className="text-lg">Medicine</p>
+                  <img src={Doc2} alt="doctor image" />
+                  <div className="info text-center bg-pink text-white flex">
+                    <p className="lead">Elizabeth Ira</p>
                   </div>
                 </div>
               </div>
 
               <div className="doc-panel-item">
                 <div className="img flex">
-                  <img src={Doc2} alt="doctor image" />
-                  <div className="info text-center bg-blue text-white flex">
-                    <p className="lead">elizabeth ira</p>
-                    <p className="text-lg">Cardiology</p>
+                  <img src={Doc1} alt="doctor image" />
+                  <div className="info text-center bg-pink text-white flex">
+                    <p className="lead">Anthony D'Angelo</p>
                   </div>
                 </div>
               </div>
@@ -269,107 +317,11 @@ const LandingPage = () => {
               <div className="doc-panel-item">
                 <div className="img flex">
                   <img src={Doc3} alt="doctor image" />
-                  <div className="info text-center bg-blue text-white flex">
-                    <p className="lead">tanya collins</p>
-                    <p className="text-lg">Medicine</p>
+                  <div className="info text-center bg-pink text-white flex">
+                    <p className="lead">Tanya Collins</p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-        <section id="posts" className="posts py">
-          <div className="container">
-            <div className="section-head">
-              <h2>Latest Post</h2>
-            </div>
-            <div className="posts-inner grid">
-              <article className="post-item bg-white">
-                <div className="img">
-                  <img src={Post1} />
-                </div>
-                <div className="content">
-                  <h4>
-                    Inspiring stories of person and family centered care during
-                    a global pandemic.
-                  </h4>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolor voluptas eius recusandae sunt obcaecati esse facere
-                    cumque. Aliquid, cupiditate debitis.
-                  </p>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nobis quia ipsam, quis iure sed nulla.
-                  </p>
-                  <div className="info flex">
-                    <small className="text text-sm">
-                      <i className="fas fa-clock"></i> October 27, 2021
-                    </small>
-                    <small className="text text-sm">
-                      <i className="fas fa-comment"></i> 5 comments
-                    </small>
-                  </div>
-                </div>
-              </article>
-
-              <article className="post-item bg-white">
-                <div className="img">
-                  <img src={Post2} />
-                </div>
-                <div className="content">
-                  <h4>
-                    Inspiring stories of person and family centered care during
-                    a global pandemic.
-                  </h4>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolor voluptas eius recusandae sunt obcaecati esse facere
-                    cumque. Aliquid, cupiditate debitis.
-                  </p>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nobis quia ipsam, quis iure sed nulla.
-                  </p>
-                  <div className="info flex">
-                    <small className="text text-sm">
-                      <i className="fas fa-clock"></i> October 27, 2021
-                    </small>
-                    <small className="text text-sm">
-                      <i className="fas fa-comment"></i> 5 comments
-                    </small>
-                  </div>
-                </div>
-              </article>
-
-              <article className="post-item bg-white">
-                <div className="img">
-                  <img src={Post3} />
-                </div>
-                <div className="content">
-                  <h4>
-                    Inspiring stories of person and family centered care during
-                    a global pandemic.
-                  </h4>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dolor voluptas eius recusandae sunt obcaecati esse facere
-                    cumque. Aliquid, cupiditate debitis.
-                  </p>
-                  <p className="text text-sm">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nobis quia ipsam, quis iure sed nulla.
-                  </p>
-                  <div className="info flex">
-                    <small className="text text-sm">
-                      <i className="fas fa-clock"></i> October 27, 2021
-                    </small>
-                    <small className="text text-sm">
-                      <i className="fas fa-comment"></i> 5 comments
-                    </small>
-                  </div>
-                </div>
-              </article>
             </div>
           </div>
         </section>
@@ -377,81 +329,37 @@ const LandingPage = () => {
 
       <footer id="footer" className="footer text-center">
         <div className="container">
-          <div className="footer-inner text-white py grid">
-            <div className="footer-item">
-              <h3 className="footer-head">about us</h3>
+          <div className="footer-inner text-white grid">
               <div className="icon">
-                <img src={Logo} />
+                <img src={navicon} />
               </div>
-              <p className="text text-md">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Debitis saepe incidunt fugiat optio corporis ea!
-              </p>
-              <address>
-                Medic Clinic <br />
-                69 Deerpark Rd, Mount Merrion <br />
-                Co. Dublin, A94 E9D3 <br />
-                Ireland
-              </address>
+
+
+            <div className="footer-item">
+              <h3 className="footer-head">Disclaimer !</h3>
+                <h2>
+                  Jika Anda sedang mengalami krisis psikologis yang mengancam hidup Anda, layanan ini tidak direkomendasikan.
+                </h2>
+                <h2>
+                  Silakan langsung menghubungi <span>119.</span> 
+                </h2>
             </div>
 
             <div className="footer-item">
-              <h3 className="footer-head">tags</h3>
-              <ul className="tags-list flex">
-                <li>medical care</li>
-                <li>emergency</li>
-                <li>therapy</li>
-                <li>surgery</li>
-                <li>medication</li>
-                <li>nurse</li>
-              </ul>
-            </div>
-
-            <div className="footer-item">
-              <h3 className="footer-head">Quick Links</h3>
-              <ul>
-                <li>
-                  <a href="#" className="text-white">
-                    Our Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Our Plan
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-white">
-                    Appointment Schedule
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer-item">
-              <h3 className="footer-head">make an appointment</h3>
-              <p className="text text-md">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum, omnis.
-              </p>
-              <ul className="appointment-info">
-                <li>8:00 AM - 11:00 AM</li>
-                <li>2:00 PM - 05:00 PM</li>
-                <li>8:00 PM - 11:00 PM</li>
-                <li>
-                  <i className="fas fa-envelope"></i>
-                  <span>revomedic@gmail.com</span>
-                </li>
-                <li>
-                  <i className="fas fa-phone"></i>
-                  <span>+003 478 2834(00)</span>
-                </li>
-              </ul>
+              <h3 className="footer-head">Didukung Oleh</h3>
+              <img src={Support} />
+              <div className="footer-right-content">
+                <SiGmail className='footer-icons' size={30} />
+                <h4>Beyondthedarkness@gmail.com</h4>
+              </div>
+              <div className="footer-right-content">
+                <FiMapPin className='footer-icons' size={45} />
+                <h4>Jl. Semolo Waru No.19, Medokan Semampir, Surabaya.</h4>
+              </div>
+              <div className="footer-right-content">
+                <FaRegCopyright className='footer-icons' size={32} />
+                <h4>2023 - BnD, Surabaya .</h4>
+              </div>
             </div>
           </div>
         </div>

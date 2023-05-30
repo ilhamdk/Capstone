@@ -32,21 +32,31 @@ const Chats = () => {
     <div className="chats">
       {Object.entries(Chats)
         ?.sort((a, b) => b[1].date - a[1].date)
-        .map((chat) => (
-          <div
-            className="userChat"
-            key={chat[0]}
-            onClick={() => handleSelect(chat[1].userInfo)}
-          >
-            <img src={chat[1].userInfo.photoURL} alt="" />
-            <div className="userChatInfo">
-              <span>{chat[1].userInfo.displayName}</span>
-              <p>{chat[1].lastMessage?.text}</p>
+        .map((chat) => {
+          const userInfo = chat[1]?.userInfo;
+          const lastMessage = chat[1]?.lastMessage;
+  
+          if (!userInfo) {
+            return null; // Jika userInfo tidak tersedia, lewati iterasi ini
+          }
+  
+          return (
+            <div
+              className="userChat"
+              key={chat[0]}
+              onClick={() => handleSelect(userInfo)}
+            >
+              <img src={userInfo.photoURL} alt="" />
+              <div className="userChatInfo">
+                <span>{userInfo.displayName}</span>
+                <p>{lastMessage?.text}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
     </div>
   );
+  
 };
 
 export default Chats;

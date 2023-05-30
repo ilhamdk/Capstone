@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import img from "../img/img.png";
 import attach from "../img/attach.png";
+import img from "../img/img.png";
 import { AuthContext } from "../context/authContext";
 import { ChatContext } from "../context/ChatContext";
 import {
@@ -72,16 +72,23 @@ const Input = () => {
     setImg(null);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <div className="input">
       <input
         type="text"
         placeholder="Tell your problem... "
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
         value={text}
       />
       <div className="send">
-        <img src={attach} alt="" />
         <input
           type="file"
           style={{ display: "none" }}
@@ -89,7 +96,7 @@ const Input = () => {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-          <img src={img} alt="" />
+          <img className="img-input-chat" src={attach} alt="" />
         </label>
         <button onClick={handleSend}>Send</button>
       </div>

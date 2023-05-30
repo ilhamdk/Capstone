@@ -41,7 +41,7 @@ const Register = () => {
               photoURL: downloadURL,
             });
             await setDoc(doc(db, "userChats", res.user.uid), {});
-            navigate("/");
+            navigate("/home");
           });
         }
       );
@@ -51,27 +51,46 @@ const Register = () => {
   };
 
   return (
-    <div className="formContainer">
-      <div className="formWrapper">
-        <span className="logo">Capstone Health Chat</span>
-        <span className="title">Register</span>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="display name" />
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
-          <input style={{ display: "none" }} type="file" id="file" />
-          <label htmlFor="file">
-            <img src={Add} alt="" />
-            <span>Add an avatar</span>
-          </label>
-          <button>Sign up</button>
-          {err && <span>Something went wrong</span>}
-        </form>
-        <p>
-          You do have an account? <Link to="/login">Login</Link>
-        </p>
+    <div className="section-login">
+    <div className="color"></div>
+    <div className="color"></div>
+    <div className="color"></div>
+    <div className="box">
+      <div className="square" style={{ "--i":"0" }}></div>
+      <div className="square" style={{ "--i":"1" }}></div>
+      <div className="square" style={{ "--i":"2" }}></div>
+      <div className="square" style={{ "--i":"3" }}></div>
+       <div className="container-login top-regist">
+        <div className="form-login">
+          <h2>Registrasi</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="inputBox">
+              <input type="text" placeholder="display name"/>
+            </div>
+            <div className="inputBox">
+              <input type="email" placeholder="email"/>
+            </div>
+            <div className="inputBox">
+              <input type="password" placeholder="password" name="" id=""/>
+            </div>
+            <div className="inputBox">
+              <input style={{ display: "none" }} type="file" id="file" />
+              <label className="add-image" htmlFor="file">
+                <img src={Add} alt="" />
+                <span>Add an avatar</span>
+              </label>
+            </div>
+            <div className="inputBox">
+              <input type="submit" value="Sign up"/>
+            </div>
+            {err && <span>Something went wrong</span>}
+            <p className="forget">"You do have an account? <Link to="/login">Sign in</Link></p>
+            <p className="forget">Go back to <Link to="/landing">Home?</Link></p>
+          </form>
+        </div>
       </div>
     </div>
+  </div>
   );
 };
 
